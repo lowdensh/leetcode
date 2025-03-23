@@ -1,6 +1,51 @@
 
 def main():
-  test_can_alice_win()
+  test_reverse_words()
+
+# 151. Reverse Words in a String
+def reverse_words(s):
+  """
+  SOLUTION 1
+  Use range() with negative step parameter
+  Build a list of words and return a joined string
+  """
+  # words = s.split()
+  # backwards = []
+  # for w in range(len(words)-1, -1, -1):
+  #   backwards.append(words[w])
+  # return " ".join(backwards)
+
+  """
+  SOLUTION 2
+  Use reversed() instead of range() with negative step
+  """
+  # words = s.split()
+  # backwards = []
+  # for w in reversed(range(len(words))):
+  #   backwards.append(words[w])
+  # return " ".join(backwards)
+
+  """
+  SOLUTION 3
+  Return a joined string without building an intermediary list of words
+  """
+  # return " ".join(reversed(s.split()))
+
+  """
+  SOLUTION 4
+  Use slicing with negative step, instead of using reversed()
+  A[::-1] slightly lower space complexity; better solution for large input sizes.
+  A[::-1] slightly faster time complexity; does not create an iterator object.
+  Looping backwards: https://stackoverflow.com/questions/869885/loop-backwards-using-indices
+  Slicing or reversing: https://www.geeksforgeeks.org/python-reversed-vs-1-which-one-is-faster/
+  """
+  return " ".join(s.split()[::-1])
+
+def test_reverse_words():
+  # s = "the sky is blue"
+  # s = "  hello world  "
+  s = "a good   example"
+  print(f"reverse_words={reverse_words(s)}")
 
 # 3232. Find if Digit Game Can Be Won
 def can_alice_win(nums):
