@@ -1,6 +1,34 @@
 
 def main():
-  test_largest_altitude()
+  test_can_alice_win()
+
+# 3232. Find if Digit Game Can Be Won
+def can_alice_win(nums):
+  sum_singles = 0
+  sum_doubles = 0
+
+  # SOLUTION BELOW - Runtime: 1ms, Memory:12.41MB
+  # for i in range(len(nums)):
+  #   if nums[i] < 10:
+  #     sum_singles += nums[i]
+  #   else:
+  #     sum_doubles += nums[i]
+  # if sum_singles != sum_doubles:
+  #   return True
+  # return False
+
+  # SOLUTION BELOW - Runtime: 0ms, Memory:12.39MB
+  # Modify return statement to decrease time complexity
+  for i in nums:
+    if i < 10: sum_singles += i
+    else: sum_doubles += i
+  return sum_singles>sum_doubles or sum_singles<sum_doubles
+
+def test_can_alice_win():
+  # nums = [1, 2, 3, 4, 10]
+  # nums = [1, 2, 3, 4, 5, 14]
+  nums = [5, 5, 5, 25]
+  print(f"can_alice_win={can_alice_win(nums)}")
 
 # 1732. Find the Highest Altitude
 def largest_altitude(gain):
