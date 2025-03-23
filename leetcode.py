@@ -1,6 +1,39 @@
 
 def main():
-  test_can_place_flowers()
+  test_largest_altitude()
+
+# 1732. Find the Highest Altitude
+def largest_altitude(gain):
+  """
+  String formatting methods, interpolation, f-strings, formatted string literals in Python
+  https://realpython.com/python-f-strings/
+
+  More string formatting with arguments
+  https://note.nkmk.me/en/python-format-zero-hex/
+
+  print("i=%s, prev=%s, gain=%s, current=%s, altitude=%s" % (i, prev, gain[i], current, altitude))
+  print(f"i={i:03d}, prev={prev:03d}, gain={gain[i]:+04d}, current={current:03d}, altitude={altitude}")
+  """
+
+  altitude = [0]
+  highest = 0
+
+  for i in range(len(gain)):
+    prev = altitude[i]
+    current = prev + gain[i]
+    altitude.append(current)
+    print(f"i={i:03d}, prev={prev:03d}, gain={gain[i]:+04d}, current={current:03d}, altitude={altitude}")
+    if current >= highest:
+      highest = current
+
+  return highest
+
+def test_largest_altitude():
+  # gain = [-5, 1, 5, 0, -7]
+  # gain = [-4, -3, -2, -1, 4, 3, 2]
+  gain = [44, 32, -9, 52, 23, -50, 50, 33, -84, 47, -14, 84, 36, -62, 37, 81, -36, -85, -39, 67, -63, 64, -47, 95, 91, -40, 65,
+   67, 92, -28, 97, 100, 81]
+  print(f"largest_altitude={largest_altitude(gain)}")
 
 # 605. Can Place Flowers
 def can_place_flowers(flowerbed, n):
