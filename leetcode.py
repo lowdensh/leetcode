@@ -1,6 +1,44 @@
 
 def main():
-  test_reverse_words()
+  test_count_bits()
+
+# 338. Counting Bits
+def count_bits(n):
+  """
+  SOLUTION 1
+  Break down the problem, working out the parts required, build a naive solution
+  """
+  # ret = []
+  # for i in range(n+1):
+  #   decimal = i
+  #   binary = bin(decimal)
+  #   num_bits = binary.count("1")
+  #   print(f"{decimal} --> {binary}, num_bits={num_bits}")
+  #   ret.append(num_bits)
+  # return ret
+
+  """
+  SOLUTION 2
+  Simplify naive solution (stop usage of variables as temporary storage)
+  """
+  # ret = []
+  # for i in range(n+1):
+  #   ret.append(bin(i).count("1"))
+  # return ret
+
+  """
+  SOLUTION 3
+  Use list comprehension, calculate length outside of loop
+  Optimise for loops: https://www.nirmalya.net/posts/2023/12/speed-up-python-loop/
+  Optimise Python in general: https://python.plainenglish.io/15-techniques-to-optimize-python-scripts-126061f97635
+  e.g. list, generator, dictionary, "is" for comparison, itertools
+  """
+  length = n+1
+  return [bin(i).count("1") for i in range(length)]
+
+def test_count_bits():
+  n = 8
+  print(f"count_bits={count_bits(n)}")
 
 # 151. Reverse Words in a String
 def reverse_words(s):
